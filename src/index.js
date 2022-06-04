@@ -12,7 +12,7 @@ db.connect();
 
 const app = express();
 app.use(express.json());
-const port = 5000;
+const port = 4000;
 
 const route = require('./routes');
 

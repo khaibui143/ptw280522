@@ -32,6 +32,7 @@ class StoreController {
             created: created,
             dated: dated,
         });
+
         store
             .save()
             .then(() => res.redirect('/list/stored/stores'))
@@ -42,9 +43,16 @@ class StoreController {
     detail(req, res, next) {
         Store.findById(req.params.id)
             .then(store => {
-                res.render('stores/detail', { 
-                    store: mongooseToObject(store)
-                })                
+                //console.log(store.created.getTime());
+                if (store.issue != null) {
+                    res.render('stores/detail', { 
+                        store: mongooseToObject(store)
+                    }) 
+                } else {
+                    res.render('stores/detailno', { 
+                        store: mongooseToObject(store)
+                    }) 
+                }      
             })
             .catch(next);
     }
@@ -99,6 +107,25 @@ class StoreController {
     // [PUT] /stores/:id/aftergetnew
     aftergetnew(req, res, next) {
         Store.updateOne({ _id: req.params.id }, req.body)
+            .then(() => res.redirect('/list/stored/stores'))
+            .catch(next);
+    }
+
+    
+    // [GET] /stores/:id/takeback
+    takeback(req, res, next) {
+        Store.findById(req.params.id)
+            .then(store => {
+                res.render('stores/takeback', {
+                    store: mongooseToObject(store),
+                })
+            })
+            .catch(next);
+    }
+    
+    // [PUT] /stores/:id/aftertakeback
+    aftertakeback(req, res, next) {
+        Store.updateOne({ _id: req.params.id }, {issue: null})
             .then(() => res.redirect('/list/stored/stores'))
             .catch(next);
     }

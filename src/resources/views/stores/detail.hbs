@@ -43,16 +43,16 @@ table, th, td {
         </tr>
       </table>
 
-      <button type="button" class="btn btn-secondary">
-        <a  href="/stores/{{store._id}}/getnew">Cấp mới giấy chứng nhận</a>            
-      </button>
-
       {{!-- <button type="button" class="btn btn-secondary">
-        <a  href="/stores/{{this._id}}/sure">Thu hồi giấy chứng nhận</a>            
+        <a  href="/stores/{{store._id}}/getnew">Cấp mới giấy chứng nhận</a>            
       </button> --}}
 
       <button type="button" class="btn btn-secondary">
-        <a  href="/stores/{{this._id}}/print">In kết quả</a>            
+        <a  href="/stores/{{store._id}}/takeback">Thu hồi giấy chứng nhận</a>            
+      </button>
+
+      <button type="button" class="btn btn-secondary">
+        <a  href="/stores/{{store._id}}/print">In kết quả</a>            
       </button>
     </div>
 

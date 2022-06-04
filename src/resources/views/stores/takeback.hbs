@@ -1,0 +1,38 @@
+<div class='mt-4'>
+    <h3>Cấp mới giấy chứng nhận cho cơ sở</h3>
+
+    <form class="mt-4" method='POST' action='/stores/{{store._id}}/aftertakeback?_method=PUT'>
+        <div class='form-group'>
+            <label for='name'>Tên cơ sở</label>
+            <span class="input-group-text">{{store.name}}</span>
+        </div>
+
+        <div class='form-group'>
+            <label for='address'>Địa chỉ</label>
+            <span class="input-group-text">{{store.address}}, {{store.ward}}, {{store.district}}</span>
+        </div>
+
+        <div class='form-group'>
+            <label for='phonenumber'>Số điện thoại</label>
+            <span class="input-group-text">{{store.phonenumber}}</span>
+        </div>
+
+        <div class='form-group'>
+            <label for='typestore'>Loại hình kinh doanh</label>
+            <span class="input-group-text">{{store.typestore}}</span>
+        </div>
+        
+        <div class='form-group'>
+            <label for='issuenumber'>Số giấy chứng nhận</label>
+            <span class="input-group-text">{{store.issue}}</span>
+        </div>
+
+        <button type="button" class="btn btn-secondary">
+            <a  href="/stores/{{store._id}}/detail">Hủy</a>            
+        </button>
+        <button type="submit" class="btn btn-danger">Thu hồi</button>
+    </form>
+
+</div>
+
+        

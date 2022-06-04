@@ -23,7 +23,7 @@
         </div>
         
         <div class='form-group'>
-            <label for='issuenumber'>Số giấy chứng giận</label>
+            <label for='issuenumber'>Số giấy chứng nhận</label>
             <input type="text" class="form-control" id='issue' name='issue'>
         </div>
 
@@ -39,6 +39,9 @@
                 {{!-- min="2018-01-01" max="2018-12-31" value="2018-05-18" --}}
         </div>
 
+        <button type="button" class="btn btn-secondary">
+            <a  href="/stores/{{store._id}}/detail">Hủy</a>            
+        </button>
         <button type='submit' class='btn btn-primary'>Cấp mới</button>
     </form>
 
