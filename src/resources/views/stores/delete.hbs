@@ -1,0 +1,36 @@
+<form class="mt-4" method='POST' action="/stores/{{store._id}}?_method=DELETE">
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Cảnh báo</h5>
+    </div>
+    <div class="modal-body">
+        Bạn chắc chắn muốn xóa cơ sở này?
+    </div>
+    <table>
+      <tr>
+        <th>Tên cơ sở:</th>
+        <td>{{store.name}}</td>
+      </tr>
+      <tr>
+        <th>Địa chỉ:</th>  
+        <td>{{store.address}}, {{store.ward}}, {{store.district}}</td>      
+      </tr>  
+      <tr>
+        <th>Số điện thoại:</th>
+        <td>{{store.phonenumber}}</td>
+      </tr>
+      <tr>
+        <th>Kiểu cơ sở:</th>
+        <td>{{store.typestore}}</td>
+      </tr>
+      <tr>
+        <th>Số giấy:</th>
+        <td>{{store.issue}}</td>
+      </tr>
+    </table>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary">
+            <a  href="/list/stored/stores">Hủy</a>            
+        </button>
+        <button type="submit" class="btn btn-danger" id="btn-delete-store">Xóa bỏ</button>
+    </div>
+</form>

@@ -1,0 +1,62 @@
+<style>
+table, th, td {
+  border: 1px solid black;
+}
+</style>
+<div class='mt-4'>
+    <h2>Chi tiết cơ sở {{store.name}}</h2>
+
+    <table>
+      <tr>
+        <th>Tên cơ sở</th>
+        <td>{{store.name}}</td>
+      </tr>
+      <tr>
+        <th>Địa chỉ</th>  
+        <td>{{store.address}}, {{store.ward}}, {{store.district}}</td>      
+      </tr>  
+      <tr>
+        <th>Số điện thoại</th>
+        <td>{{store.phonenumber}}</td>
+      </tr>
+      <tr>
+        <th>Kiểu cơ sở</th>
+        <td>{{store.typestore}}</td>
+      </tr>
+    </table>
+
+    <div class="mt-4">
+      <h2>Chứng nhận cơ sở đạt chuẩn</h2>
+
+      <table>
+        <tr>
+          <th>Số giấy</th>
+          <td>{{store.issue}}</td>
+        </tr>
+        <tr>
+          <th>Ngày cấp</th>
+          <td>{{store.created}}</td>
+        </tr>
+        <tr>
+          <th>Hạn sử dụng đến</th>
+          <td>{{store.dated}}</td>
+        </tr>
+      </table>
+
+      <button type="button" class="btn btn-secondary">
+        <a  href="/stores/{{store._id}}/getnew">Cấp mới giấy chứng nhận</a>            
+      </button>
+
+      {{!-- <button type="button" class="btn btn-secondary">
+        <a  href="/stores/{{this._id}}/sure">Thu hồi giấy chứng nhận</a>            
+      </button> --}}
+
+      <button type="button" class="btn btn-secondary">
+        <a  href="/stores/{{this._id}}/print">In kết quả</a>            
+      </button>
+    </div>
+
+
+
+
+</div>

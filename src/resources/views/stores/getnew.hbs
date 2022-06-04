@@ -1,0 +1,45 @@
+<div class='mt-4'>
+    <h3>Cấp mới giấy chứng nhận cho cơ sở</h3>
+
+    <form class="mt-4" method='POST' action='/stores/{{store._id}}/aftergetnew?_method=PUT'>
+        <div class='form-group'>
+            <label for='name'>Tên cơ sở</label>
+            <span class="input-group-text">{{store.name}}</span>
+        </div>
+
+        <div class='form-group'>
+            <label for='address'>Địa chỉ</label>
+            <span class="input-group-text">{{store.address}}, {{store.ward}}, {{store.district}}</span>
+        </div>
+
+        <div class='form-group'>
+            <label for='phonenumber'>Số điện thoại</label>
+            <span class="input-group-text">{{store.phonenumber}}</span>
+        </div>
+
+        <div class='form-group'>
+            <label for='typestore'>Loại hình kinh doanh</label>
+            <span class="input-group-text">{{store.typestore}}</span>
+        </div>
+        
+        <div class='form-group'>
+            <label for='issuenumber'>Số giấy chứng giận</label>
+            <input type="text" class="form-control" id='issue' name='issue'>
+        </div>
+
+        <div class="form-group">
+            <label for="myDate2">Ngày cấp</label>
+            <input type="date" id="created" name="created" class="form-control">
+                {{!-- min="2018-01-01" max="2018-12-31" value="2018-05-18" --}}
+        </div>
+
+        <div class="form-group">
+            <label for="myDate2">Hạn sử dụng</label>
+            <input type="date" id="dated" name="dated" class="form-control">
+                {{!-- min="2018-01-01" max="2018-12-31" value="2018-05-18" --}}
+        </div>
+
+        <button type='submit' class='btn btn-primary'>Cấp mới</button>
+    </form>
+
+</div>

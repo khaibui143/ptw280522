@@ -1,0 +1,76 @@
+<div class='mt-4'>
+    <h3>Thêm cơ sở mới</h3>
+
+    <form method='post' action='/stores/store'>
+        <div class='form-group'>
+            <label for='name'>Tên cơ sở</label>
+            <input type='text' class='form-control' id='name' name='name' />
+        </div>
+
+        <div class='form-group'>
+            <label for='address'>Địa chỉ</label>
+            <input type='text' class='form-control' id='address' name='address' />
+            <div class="input-group">
+                <span class="input-group-text">Phường/Xã/Thị trấn</span>
+                <input type="text" aria-label="First name" class="form-control" id='ward' name='ward'>
+            </div>
+            
+            <div class="input-group mb-3">
+            <label class="input-group-text" for="inputGroupSelect01">Quận/Huyện</label>
+            <select class="form-select" id="inputGroupSelect01" id='district' name='district'>
+                <option selected>Choose...</option>
+                <option value="Tây Hồ">Tây Hồ</option>
+                <option value="Hoàng Mai">Hoàng Mai</option>
+                <option value="Thanh Xuân">Thanh Xuân</option>
+                <option value="Ba Đình">Ba Đình</option>
+                <option value="Nam Từ Liêm">Nam Từ Liêm</option>
+                <option value="Bắc Từ Liêm">Bắc Từ Liêm</option>
+                <option value="Hai Bà Trưng">Hai Bà Trưng</option>
+            </select>
+            </div>
+        </div>
+
+        <div class='form-group'>
+            <label for='phonenumber'>Số điện thoại</label>
+            <input
+                type='text'
+                class='form-control'
+                id='phonenumber'
+                name='phonenumber'
+            />
+        </div>
+
+        <div class='form-group'>
+            <label for='typestore'>Loại hình kinh doanh</label>
+            <div class="input-group mb-3">
+            <label class="input-group-text" for="inputGroupSelect01">Loai kinh doanh</label>
+            <select class="form-select" id="inputGroupSelect01" id='typestore' name='typestore'>
+                <option selected>Chọn...</option>
+                <option value="Cơ sở sản xuất thực phẩm">Cơ sở sản xuất thực phẩm</option>
+                <option value="Kinh doanh dịch vụ ăn uống">Kinh doanh dịch vụ ăn uống</option>
+                <option value="Kinh doanh và sản xuất">Kinh doanh và sản xuất</option>
+            </select>
+            </div>
+        </div>
+        
+        <div class='form-group'>
+            <label for='issuenumber'>Số giấy chứng giận</label>
+            <input type="text" class="form-control" id='issue' name='issue'>
+        </div>
+
+        <div class="form-group">
+            <label for="myDate2">Ngày cấp</label>
+            <input type="date" id="created" name="created" class="form-control">
+                {{!-- min="2018-01-01" max="2018-12-31" value="2018-05-18" --}}
+        </div>
+
+        <div class="form-group">
+            <label for="myDate2">Hạn sử dụng</label>
+            <input type="date" id="dated" name="dated" class="form-control">
+                {{!-- min="2018-01-01" max="2018-12-31" value="2018-05-18" --}}
+        </div>
+
+        <button type='submit' class='btn btn-primary'>Thêm cơ sở</button>
+    </form>
+
+</div>

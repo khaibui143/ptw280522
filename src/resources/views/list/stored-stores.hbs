@@ -1,0 +1,101 @@
+<div class="mt-4">
+    <h3>Danh sách các cơ sở</h3>
+
+    <table class="table mt-4">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">
+                  Tên cơ sở
+                </th>
+                <th scope="col">
+                  Địa chỉ
+                </th>
+                <th scope="col">
+                  Quận/Huyện
+                </th>
+                <th scope="col">
+                  Số điện thoại
+                </th>
+                <th scope="col">
+                  Kiểu/loại cơ sở
+                </th>
+                <th scope="col">
+                  Số giấy chứng nhận
+                </th>
+                <th scope="col">Khác</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each stores}}
+            <tr>
+                <th scope="row">{{ sum @index 1}}</th>
+                <td>{{this.name}}</td>
+                <td>{{this.address}}, {{this.ward}}</td>
+                <td>
+                  <a href="#" class="btn btn-link">{{this.district}}</a>
+                </td>
+                <td>{{this.phonenumber}}</td>
+                <td>{{this.typestore}}</td>
+                <td>{{this.issue}}</td>
+                <td>
+                    <a href="/stores/{{this._id}}/detail" class="btn btn-link">Chi tiết</a>
+                </td>
+                <td>
+                    <a href="/stores/{{this._id}}/edit" class="btn btn-link">Chỉnh sửa</a>
+                </td>
+                <td>
+                    <a href="/stores/{{this._id}}/sure" class="btn btn-link">Xóa</a>
+                     {{!-- data-bs-toggle="modal" data-bs-id="{{this._id}}" data-bs-target="#exampleModal" --}}
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>
+
+{{!-- Confirm delete --}}
+
+<!-- Modal -->
+{{!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Cảnh báo</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Bạn chắc chắn muốn xóa cơ sở này?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+        <button type="button" class="btn btn-danger" id="btn-delete-store">Xóa bỏ</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<form class="mt-4" method='POST' name="delete-store-form"></form>
+
+<script>
+  const exampleModal = document.getElementById('exampleModal');
+
+  exampleModal.addEventListener('show.bs.modal', event => {
+      var storeId;
+      var deleteform = document.forms['delete-store-form'];
+
+      const button = event.relatedTarget;
+      storeId = button.getAttribute('data-bs-id');
+
+      //console.log(id);
+
+      var btnDeleteStore = document.getElementById('btn-delete-store');
+
+      btnDeleteStore.onclick = function () {
+        deleteform.action = '/stores/' + storeId + '?_method=DELETE';
+        deleteform.submit();
+      }
+  })
+</script> --}}
