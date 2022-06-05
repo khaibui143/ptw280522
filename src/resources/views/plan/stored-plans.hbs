@@ -1,0 +1,44 @@
+<div class="mt-4">
+    <h3>Danh sách các cơ sở đã được thanh, kiểm tra</h3>
+
+    <table class="table mt-4">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">
+                  Tên cơ sở
+                </th>
+                <th scope="col">
+                  Địa chỉ
+                </th>
+                <th scope="col">
+                  Kiểu/loại cơ sở
+                </th>
+                <th scope="col">
+                  Số giấy chứng nhận
+                </th>
+                <th scope="col">
+                  Ngày thanh, kiểm tra
+                </th>
+                <th scope="col">Khác</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each stores}}
+            <tr>
+                <th scope="row">{{ sum @index 1}}</th>
+                <td>{{this.name}}</td>
+                <td>{{this.address}}, {{this.ward}}, {{this.district}}</td>
+                <td>{{this.typestore}}</td>
+                <td>{{this.testtime}}</td>
+                <td>{{this.issue}}</td>
+                <td>
+                    <a href="/stores/{{this._id}}/detail" class="btn btn-link">Chi tiết</a>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>

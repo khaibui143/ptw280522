@@ -21,6 +21,9 @@ router.put('/:id/aftertakeback', storeController.aftertakeback);
 
 router.get('/:id/print', storeController.print);
 
+router.get('/:id/examine', storeController.examine);
+router.put('/:id/afterexamine', storeController.afterexamine);
+
 router.get('/:id/detail', storeController.detail);
 
 module.exports = router;

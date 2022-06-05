@@ -1,5 +1,6 @@
 const Store = require('../models/Store');
 const { mongooseToObject } = require('../../util/mongoose');
+const { db } = require('../models/Store');
 
 class StoreController {
 
@@ -21,6 +22,36 @@ class StoreController {
         const created = req.body.created;
         const dated = req.body.dated;
 
+        const months = ["tháng 1", "tháng 2", "tháng 3", "tháng 4", "tháng 5", "tháng 6", "tháng 7", "tháng 8", "tháng 9", "tháng 10", "tháng 11", "tháng 12"];
+        const d = new Date(created);
+        let month = months[d.getMonth()];
+
+        var typei;
+        var prio;
+        var tt = d.getDate() + ' ' + month + ' năm ' + d.getFullYear();
+        var tas;
+        const event = Date.now();
+        if (issue == '') {
+            typei = 'Chưa có/Đã bị thu hồi';
+            prio = 3;
+        } 
+        else if (issue != null) {
+            if (event > dated) {
+                typei = 'Đã hết hạn sử dụng';
+                prio = 2;
+            } else if (event <= dated) {
+                typei = 'Còn sử dụng được';
+                prio = 1;
+                tas = 'Rất tốt'
+            }
+        }
+
+        const typeissue = typei;
+        const priority = prio;
+        const testtime = tt;
+
+        console.log(tt);
+
         const store = new Store({
             name: name,
             address: address,
@@ -29,8 +60,19 @@ class StoreController {
             phonenumber: phonenumber,
             typestore: typestore,
             issue: issue,
+            typeissue: typeissue,
             created: created,
             dated: dated,
+            priority: priority,
+            testtime: testtime,
+            infrastructure: 'Rất tốt',
+            service: 'Rất tốt',
+            hygiene: 'Rất tốt',
+            environment: 'Rất tốt',
+            inspectionunit: 'RED',
+            result: 'Rất tốt',
+            conclusion: 'Đủ điều kiện',
+            infringe: 'Không có vi phạm'
         });
 
         store
@@ -41,13 +83,24 @@ class StoreController {
 
     // [GET] /stores/:id/detail
     detail(req, res, next) {
+        // Store.countDocuments({}, function(err, count) {
+        //     if (err) { return handleError(err) } //handle possible errors
+        //     console.log(count);
+        //     //and do some other fancy stuff
+        // })
         Store.findById(req.params.id)
             .then(store => {
-                //console.log(store.created.getTime());
                 if (store.issue != null) {
-                    res.render('stores/detail', { 
-                        store: mongooseToObject(store)
-                    }) 
+                    if (store.dated >= Date.now()) {
+                        //console.log(store.testtime);
+                        res.render('stores/detail', { 
+                            store: mongooseToObject(store)
+                        }) 
+                    } else {
+                        res.render('stores/detailout', { 
+                            store: mongooseToObject(store)
+                        }) 
+                    }
                 } else {
                     res.render('stores/detailno', { 
                         store: mongooseToObject(store)
@@ -140,6 +193,25 @@ class StoreController {
             })
             .catch(next);
     }
+
+    // [GET] /stores/:id/examine
+    examine(req, res, next) {
+        Store.findById(req.params.id)
+            .then(store => {
+                res.render('stores/examine', {
+                    store: mongooseToObject(store),
+                })
+            })
+            .catch(next);
+    }
+    
+    // [PUT] /stores/:id/afterexamine
+    afterexamine(req, res, next) {
+        Store.updateOne({ _id: req.params.id }, req.body)
+            .then(() => res.redirect('/list/stored/stores'))
+            .catch(next);
+    }
+
 }
 
 module.exports = new StoreController();
