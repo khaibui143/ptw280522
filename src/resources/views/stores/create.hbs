@@ -1,7 +1,56 @@
-<div class='mt-4'>
-    <h3>Thêm cơ sở mới</h3>
+<style>
+    .root {
+        background-color: ghostwhite;
+    }
+    label {
+        <!-- border: solid 1px black; -->
+        display: block;
+    }
+    .mt-4 {
+        width: 900px;
+        margin: auto;
+        display: flex;
+        border: 1px solid gray;
+        border-radius: 10px;
+    }
 
-    <form method='post' action='/stores/store'>
+    .sideTitle {
+        display: block;
+        flex: 1;
+        padding: 80px 0px 60px 40px;
+        font-size: 50px;
+        background-color: rgb(29, 116, 159);
+        color: white;
+        border-radius: 10px 0px 0px 10px;
+    }
+
+    .sideTitle > span {
+        padding-top: 80px;        
+        display: block;
+        color: white;
+        font-size: 20px;
+    }
+
+    .formSection {
+        flex: 3;
+        padding: 100px 0px 0px 10px;
+    }
+    .form-group {
+            padding-bottom: 10px;
+    }
+    input {
+        max-width: 70%;
+    }
+</style>
+
+<div class='mt-4'>
+    <div class="sideTitle">
+        Thêm cơ sở mới
+        <span>Điền đầy đủ và chính xác thông tin về cơ sở buôn bán</span>
+    </div>
+    <div class="formSection">
+        <span>Thông tin cơ bản</span>
+        <form method='post' action='/stores/store'>
         <div class='form-group'>
             <label for='name'>Tên cơ sở</label>
             <input type='text' class='form-control' id='name' name='name' />
@@ -54,7 +103,7 @@
         </div>
         
         <div class='form-group'>
-            <label for='issuenumber'>Số giấy chứng giận</label>
+            <label for='issuenumber'>Số giấy chứng nhận</label>
             <input type="text" class="form-control" id='issue' name='issue'>
         </div>
 
@@ -72,5 +121,5 @@
 
         <button type='submit' class='btn btn-primary'>Thêm cơ sở</button>
     </form>
-
+    </div>
 </div>
