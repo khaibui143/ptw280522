@@ -1,34 +1,76 @@
 <style>
-table, th, td {
-  border: 1px solid black;
-}
+  table {
+  border-bottom: 1px; 
+  width: 100%;
+  }
+
+  th {
+    border-right: 2px solid gray; 
+  }
+
+  th, td {
+    border-bottom: 2px solid gray;
+    padding-left: 10px;
+  }
+
+  .sectionTitle {
+    display: block;
+    padding: 10px;
+    font-size: 30px;
+    background-color: blue;
+    color: white;
+    border-radius: 5px 5px 0px 0px;
+  }
+
+  .certificateInfo {
+
+  }
+
+  .inner{
+    border: 2px solid blue; 
+    border-radius: 0px 0px 5px 5px;
+    box-shadow: 10px 10px 5px lightblue;
+  }
+
+  .buttonGroup {
+    padding-top: 20px;
+    display: flex;
+    justify-content: center;
+  }
 </style>
 <div class='mt-4'>
-    <h2>Chi tiết cơ sở {{store.name}}</h2>
-
-    <table>
-      <tr>
-        <th>Tên cơ sở</th>
-        <td>{{store.name}}</td>
-      </tr>
-      <tr>
-        <th>Địa chỉ</th>  
-        <td>{{store.address}}, {{store.ward}}, {{store.district}}</td>      
-      </tr>  
-      <tr>
-        <th>Số điện thoại</th>
-        <td>{{store.phonenumber}}</td>
-      </tr>
-      <tr>
-        <th>Kiểu cơ sở</th>
-        <td>{{store.typestore}}</td>
-      </tr>
-    </table>
-
-    <div class="mt-4">
-      <h2>Chưa có chứng nhận cơ sở đạt chuẩn</h2>
+  <div class="detail">
+    <span class="sectionTitle">Chi tiết cơ sở {{store.name}}</span>
+    <div class="inner">
+      <table>
+        <tr>
+          <th>Tên cơ sở</th>
+          <td>{{store.name}}</td>
+        </tr>
+        <tr>
+          <th>Địa chỉ</th>  
+          <td>{{store.address}}, {{store.ward}}, {{store.district}}</td>      
+        </tr>  
+        <tr>
+          <th>Số điện thoại</th>
+          <td>{{store.phonenumber}}</td>
+        </tr>
+        <tr>
+          <th>Kiểu cơ sở</th>
+          <td>{{store.typestore}}</td>
+        </tr>
+      </table>
+      </div>
     </div>
+  </div>
 
+  <div class="mt-4">
+    <div class="certificationInfo">
+      <span class="sectionTitle">Chưa có chứng nhận cơ sở đạt chuẩn</span>
+    </div>
+  </div>
+    
+  <div class="buttonGroup">
     <button type="button" class="btn btn-secondary">
       <a  href="/stores/{{store._id}}/getnew">Cấp mới giấy chứng nhận</a>            
     </button>
@@ -40,7 +82,5 @@ table, th, td {
     <button type="button" class="btn btn-secondary">
       <a  href="/stores/{{this._id}}/print">In kết quả</a>            
     </button>
-
-
-
+  </div>
 </div>

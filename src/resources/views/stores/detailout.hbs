@@ -1,67 +1,112 @@
 <style>
-table, th, td {
-  border: 1px solid black;
-}
+  table {
+  border-bottom: 1px; 
+  width: 100%;
+
+  }
+
+  th {
+    border-right: 2px solid gray; 
+  }
+
+  th, td {
+    border-bottom: 2px solid gray;
+    padding-left: 10px;
+  }
+
+  .sectionTitle {
+    display: block;
+    padding: 10px;
+    font-size: 30px;
+    background-color: blue;
+    color: white;
+    border-radius: 5px 5px 0px 0px;
+  }
+
+  .certificateInfo {
+
+  }
+
+  .inner{
+    border: 2px solid blue; 
+    border-radius: 0px 0px 5px 5px;
+    box-shadow: 10px 10px 5px lightblue;
+  }
+
+  .buttonGroup {
+    padding: 20px 0px;
+    display: flex;
+    justify-content: center;
+  }
 </style>
 <div class='mt-4'>
-    <h2>Chi tiết cơ sở {{store.name}}</h2>
+    <div class="detail">
+      <span class="sectionTitle">Chi tiết cơ sở {{store.name}}</span>
+      <div class="inner">
+        <table>
+          <tr>
+            <th>Tên cơ sở</th>
+            <td>{{store.name}}</td>
+          </tr>
+          <tr>
+            <th>Địa chỉ</th>  
+            <td>{{store.address}}, {{store.ward}}, {{store.district}}</td>      
+          </tr>  
+          <tr>
+            <th>Số điện thoại</th>
+            <td>{{store.phonenumber}}</td>
+          </tr>
+          <tr>
+            <th>Kiểu cơ sở</th>
+            <td>{{store.typestore}}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
 
-    <table>
-      <tr>
-        <th>Tên cơ sở</th>
-        <td>{{store.name}}</td>
-      </tr>
-      <tr>
-        <th>Địa chỉ</th>  
-        <td>{{store.address}}, {{store.ward}}, {{store.district}}</td>      
-      </tr>  
-      <tr>
-        <th>Số điện thoại</th>
-        <td>{{store.phonenumber}}</td>
-      </tr>
-      <tr>
-        <th>Kiểu cơ sở</th>
-        <td>{{store.typestore}}</td>
-      </tr>
-    </table>
 
     <div class="mt-4">
-      <h2>Chứng nhận cơ sở đạt chuẩn (đã hết hạn sử dụng)</h2>
+      <div class="certificateInfo">
+        <span class="sectionTitle">Chứng nhận cơ sở đạt chuẩn (đã hết hạn sử dụng)</span>
+        <div class="inner">
+          <table>
+            <tr>
+              <th>Số giấy</th>
+              <td>{{store.issue}}</td>
+            </tr>
+            <tr>
+              <th>Ngày cấp</th>
+              <td>{{store.created}}</td>
+            </tr>
+            <tr>
+              <th>Hạn sử dụng đến</th>
+              <td>{{store.dated}}</td>
+            </tr>
+          </table>
+          <div class="buttonGroup">
+            {{!-- <button type="button" class="btn btn-secondary">
+              <a  href="/stores/{{store._id}}/getnew">Cấp mới giấy chứng nhận</a>            
+            </button> --}}
 
-      <table>
-        <tr>
-          <th>Số giấy</th>
-          <td>{{store.issue}}</td>
-        </tr>
-        <tr>
-          <th>Ngày cấp</th>
-          <td>{{store.created}}</td>
-        </tr>
-        <tr>
-          <th>Hạn sử dụng đến</th>
-          <td>{{store.dated}}</td>
-        </tr>
-      </table>
+            <button type="button" class="btn btn-danger" style="margin-top: 10px;">
+              <a  href="/stores/{{store._id}}/takeback">Thu hồi giấy chứng nhận</a>            
+            </button>
 
-      {{!-- <button type="button" class="btn btn-secondary">
-        <a  href="/stores/{{store._id}}/getnew">Cấp mới giấy chứng nhận</a>            
-      </button> --}}
-
-      <button type="button" class="btn btn-danger" style="margin-top: 10px;">
-        <a  href="/stores/{{store._id}}/takeback">Thu hồi giấy chứng nhận</a>            
-      </button>
-
-      <button type="button" class="btn btn-secondary" style="margin-top: 10px;">
-        <a  href="/stores/{{store._id}}/print">In kết quả</a>            
-      </button>
+            <button type="button" class="btn btn-secondary" style="margin-top: 10px;">
+              <a  href="/stores/{{store._id}}/print">In kết quả</a>            
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="mt-4">
-        <h2>Hoạt động thanh, kiểm tra</h2>
-
-        <button type="button" class="btn btn-secondary">
-            <a  href="/stores/{{store._id}}/examine">Lập kế hoạch thanh, kiểm tra</a>            
-        </button>
+        <span class="sectionTitle">Hoạt động thanh, kiểm tra</span>
+        <div class="buttonGroup">
+          <button type="button" class="btn btn-secondary">
+              <a  href="/stores/{{store._id}}/examine">Lập kế hoạch thanh, kiểm tra</a>            
+          </button>
+        </div>
     </div>
 
 </div>
